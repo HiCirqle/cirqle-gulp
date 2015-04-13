@@ -24,21 +24,21 @@ module.exports = function(gulp, $, config, patterns, dependancies) {
             $.livereload.listen({
                 port: config.livereload
             });
-                        
+            
             // watch for changes
             gulp.watch([
                 [config.root, '.tmp/*.html'].join('/'),
                 [config.root, '.tmp/scripts/**/*.js'].join('/'),
                 [config.root, '.tmp/styles/**/*.css'].join('/'),
                 [config.root, '.tmp/images/**/*'].join('/'),
+                [config.root, '.tmp/views/partials/**/*.' + config.templateExt].join('/'),
             ]).on('change', function(event) {
-                console.log('Changed', event.path);
-                $.livereload.changed(event.path);
+                $.livereload.changed(event.path)
             });
 
             gulp.watch([config.root, 'app/styles/**/*.s*ss'].join('/'), ['styles']);
             gulp.watch([config.root, 'app/scripts/**/*.js'].join('/'), ['scripts']);
-            gulp.watch([config.root, 'app/views/partials/**/*.' + config.templateExt].join('/'), ['templates']);
+            gulp.watch([config.root, 'app/views/partials/**/*.', config.templateExt].join('/'), ['templates']);
             gulp.watch([config.root, 'app/*.' + config.templateExt].join('/'), ['html']);
         });
     }
