@@ -4,9 +4,10 @@ module.exports = function(gulp, $, config, patterns) {
     return function() {
         gulp.task('build', function () {
             var assets = $.useref.assets({
-                searchPath: [config.root, '.tmp'].join('/')
+                searchPath: '.tmp'
             });
-            return gulp.src([config.root, '.tmp/index.html'].join('/'))
+            console.log([config.root, '.tmp'].join('/'), [config.root, 'dist'].join('/'))
+            return gulp.src('.tmp/index.html')
                 .pipe(assets) // Get assets from index.html
                 .pipe($.rev()) // Apply version names to built files
                 /*.pipe($.if('*.js', $.uglify({ // concat and uglify js
@@ -14,9 +15,11 @@ module.exports = function(gulp, $, config, patterns) {
                 })))*/
                 .pipe($.if('*.css', $.minifyCss())) // Minify css
                 .pipe(assets.restore()) // Rewrite unversioned filerefs in index.html
-                .pipe($.revReplace()) // Replace filerefs with version
+                .pipe($.revReplace({
+                    prefix: '/'
+                })) // Replace filerefs with version
                 .pipe($.useref())
-                .pipe(gulp.dest([config.root, 'dist'].join('/'))) // Write versioned files to dist
+                .pipe(gulp.dest('dist')) // Write versioned files to dist
                 .pipe($.size({
                     showFiles: true
                 }));
