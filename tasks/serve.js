@@ -33,12 +33,13 @@ module.exports = function(gulp, $, config, patterns, dependancies) {
                 [config.root, '.tmp/images/**/*'].join('/'),
                 [config.root, '.tmp/views/partials/**/*.' + config.templateExt].join('/'),
             ]).on('change', function(event) {
-                $.livereload.changed(event.path)
+                console.log('Changed', event.path);
+                $.livereload.changed(event.path);
             });
 
             gulp.watch([config.root, 'app/styles/**/*.s*ss'].join('/'), ['styles']);
             gulp.watch([config.root, 'app/scripts/**/*.js'].join('/'), ['scripts']);
-            gulp.watch([config.root, 'app/views/partials/**/*.', config.templateExt].join('/'), ['templates']);
+            gulp.watch([config.root, 'app/views/partials/**/*.' + config.templateExt].join('/'), ['templates']);
             gulp.watch([config.root, 'app/*.' + config.templateExt].join('/'), ['html']);
         });
     }
