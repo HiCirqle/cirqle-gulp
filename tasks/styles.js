@@ -15,7 +15,7 @@ module.exports = function(gulp, $, config, patterns) {
                     onError: console.error.bind(console, 'Sass error:')
                 }, config.sass || {})))
                 .pipe($.postcss([
-                    //require('autoprefixer-core')({browsers: ['last 1 version']})
+                    require('autoprefixer-core')({browsers: ['last 1 version']})
                 ]))
                 //.pipe($.sourcemaps.write())
                 .pipe(gulp.dest([config.root, '.tmp/styles'].join('/')));
