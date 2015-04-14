@@ -6,6 +6,7 @@ module.exports = function(gulp, $, config, patterns) {
     return function() {
         gulp.task('styles', function () {
             return gulp.src([config.root, 'app/styles/main.s*ss'].join('/'))
+                .pipe($.plumber())
                 //.pipe($.sourcemaps.init())
                 .pipe($.sass(_.extend({
                     outputStyle: 'nested', // libsass doesn't support expanded yet
