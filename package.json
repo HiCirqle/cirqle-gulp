@@ -60,5 +60,8 @@
     "gulp-plumber": "^1.0.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-size": "^1.2.1"
+  },
+  "devDependencies": {
+    "gulp-cached": "^1.0.4"
   }
 }

@@ -5,6 +5,7 @@ module.exports = function(gulp, $, config, patterns) {
         gulp.task('scripts', function() {
             return gulp.src('app/scripts/**/*.js')
                 .pipe($.plumber())
+                .pipe($.cached('scripts'))
                 .pipe($.es6Transpiler({
                     disallowUnknownReferences: false
                 }))
