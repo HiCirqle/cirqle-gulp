@@ -1,6 +1,6 @@
 {
   "name": "cirqle-gulp",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Angular gulp generator",
   "private": true,
   "main": "index.js",
