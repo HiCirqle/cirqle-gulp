@@ -10,7 +10,7 @@ module.exports = function(gulp) {
         $ = require('gulp-load-plugins')();
 
     // Which config file to use to swap out @@ replacements
-    var env = yargs.argv.env || 'development';
+    var env = yargs.argv.env || 'production';
 
     // Holds the gulp configuration for ports etc
     var config = _.extend({
