@@ -4,7 +4,7 @@ module.exports = function(gulp, $, config, patterns) {
     return function() {
         gulp.task('images', function () {
             return gulp.src('app/images/**/*')
-                .pipe($.cache($.imagemin({
+                /*.pipe($.cache($.imagemin({
                     progressive: true,
                     interlaced: true,
                     // don't remove IDs from SVGs, they are often used
@@ -12,7 +12,7 @@ module.exports = function(gulp, $, config, patterns) {
                     svgoPlugins: [{
                         cleanupIDs: false
                     }]
-                })))
+                })))*/
                 .pipe(gulp.dest('.tmp/images'))
                 .pipe(gulp.dest('./dist/images'));
         });

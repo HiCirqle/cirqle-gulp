@@ -1,6 +1,6 @@
 {
   "name": "cirqle-gulp",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Angular gulp generator",
   "private": true,
   "main": "index.js",
@@ -58,7 +58,6 @@
     "gulp-csso": "^1.0.0",
     "autoprefixer-core": "^5.1.8",
     "gulp-plumber": "^1.0.0",
-    "gulp-imagemin": "^2.2.1",
     "gulp-size": "^1.2.1",
     "gulp-cached": "^1.0.4"
   }
