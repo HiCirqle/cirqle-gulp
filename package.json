@@ -1,12 +1,11 @@
 {
   "name": "cirqle-gulp",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Angular gulp generator",
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": "0.10.x",
-    "npm": "~2.6.x"
+    "node": "0.10.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
