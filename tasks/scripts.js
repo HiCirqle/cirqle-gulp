@@ -13,18 +13,19 @@ module.exports = function(gulp, $, config, patterns) {
     return function() {
         gulp.task('scripts', function() {
             return gulp.src('app/scripts/**/*.js')
-                .pipe($.jshint(jshintConfig)) // jshint test
-                // .pipe($.jshint.reporter('default', { verbose: true })) // reporter
-                .pipe($.jshint.reporter(stylish)) // reporter
-                .pipe($.jshint.reporter('fail')) // jshint test stop when failed
                 .pipe($.plumber())
-                .pipe($.cached('scripts'))
-                .pipe($.es6Transpiler({
-                    disallowUnknownReferences: false
-                }))
+                .pipe($.jshint(jshintConfig))
+                .pipe($.jshint.reporter(stylish))
+                // Dont't fail in non-production build
+                .pipe($.jshint.reporter('default'))
+                // jshint test stop when failed on production
+                .pipe($.if(process.env.NODE_ENV === 'production', $.jshint.reporter('fail')))
+                .pipe($.cached('scripts'))                
+                .pipe($.babel())
                 .pipe($.replaceTask({
-                    patterns: patterns
+                    patterns: patterns,
                 }))
+                .pipe($.plumber())
                 .pipe(gulp.dest('.tmp/scripts'));
         });
     }
