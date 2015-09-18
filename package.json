@@ -1,6 +1,6 @@
 {
   "name": "cirqle-gulp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Angular gulp generator",
   "private": true,
   "main": "index.js",
@@ -25,6 +25,7 @@
     "del": "^0.1.3",
     "gulp": "latest",
     "gulp-angular-templatecache": "^1.2.1",
+    "gulp-babel": "^5.2.1",
     "gulp-cache": "^0.2.8",
     "gulp-cached": "^1.0.4",
     "gulp-concat": "^2.2.0",
@@ -88,9 +89,5 @@
   "_id": "cirqle-gulp@1.0.0",
   "_shasum": "806aee5ee7989fbdbafe78b233294c3af21a4543",
   "_from": "../cirqle-gulp",
-  "_resolved": "file:../cirqle-gulp",
-  "devDependencies": {
-    "gulp-babel": "^5.2.1",
-    "gulp-remove-use-strict": "0.0.2"
-  }
+  "_resolved": "file:../cirqle-gulp"
 }
