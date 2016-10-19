@@ -1,9 +1,12 @@
 'use strict';
 var stylish = require('jshint-stylish'),
     _ = require('underscore'),
-    fs = require('fs');
-var packageJSON  = require('../package');
-var jshintConfig = packageJSON.jshintConfig;
+    fs = require('fs'),
+    gulpIf = require('gulp-if'),
+    stripDebug = require('gulp-strip-debug'),
+    packageJSON  = require('../package'),
+    jshintConfig = packageJSON.jshintConfig;
+
 jshintConfig.lookup = false;
 
 module.exports = function(gulp, $, config, patterns) {
@@ -26,6 +29,7 @@ module.exports = function(gulp, $, config, patterns) {
                     patterns: patterns,
                 }))
                 .pipe($.plumber())
+                .pipe(gulpIf(config.env !== 'development', stripDebug()))
                 .pipe(gulp.dest('.tmp/scripts'));
         });
     }
