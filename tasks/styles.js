@@ -1,13 +1,14 @@
 'use strict';
 
-var _ = require('underscore');
+var _ = require('underscore'),
+    gulpIf = require('gulp-if');
 
 module.exports = function(gulp, $, config, patterns) {
     return function() {
         gulp.task('styles', function () {
             return gulp.src([config.root, 'app/styles/main.s*ss'].join('/'))
                 .pipe($.plumber())
-                //.pipe($.sourcemaps.init())
+                .pipe(gulpIf(config.env === 'development', $.sourcemaps.init()))
                 .pipe($.sass(_.extend({
                     outputStyle: 'nested', // libsass doesn't support expanded yet
                     precision: 10,
@@ -17,7 +18,7 @@ module.exports = function(gulp, $, config, patterns) {
                 .pipe($.postcss([
                     require('autoprefixer-core')({browsers: ['last 1 version']})
                 ]))
-                //.pipe($.sourcemaps.write())
+                .pipe(gulpIf(config.env === 'development', $.sourcemaps.write('/maps')))
                 .pipe(gulp.dest([config.root, '.tmp/styles'].join('/')));
         });
     }
