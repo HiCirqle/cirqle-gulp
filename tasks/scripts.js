@@ -24,7 +24,9 @@ module.exports = function(gulp, $, config, patterns) {
                 // jshint test stop when failed on production
                 .pipe($.if(process.env.NODE_ENV === 'production', $.jshint.reporter('fail')))
                 .pipe($.cached('scripts'))                
-                .pipe($.babel())
+                .pipe($.babel({
+                    presets: ['env'],
+                }))
                 .pipe($.replaceTask({
                     patterns: patterns,
                 }))
