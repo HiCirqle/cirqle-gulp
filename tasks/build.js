@@ -15,7 +15,7 @@ module.exports = function(gulp, $, config, patterns) {
                 //.pipe($.if('*.css', $.minifyCss())) // Minify css
                 .pipe(assets.restore()) // Rewrite unversioned filerefs in index.html
                 .pipe($.revReplace({
-                    prefix: '/'
+                    prefix: '/v1/dist/'
                 })) // Replace filerefs with version
                 .pipe($.useref())
                 .pipe(gulp.dest('dist')) // Write versioned files to dist

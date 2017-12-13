@@ -24,9 +24,6 @@ module.exports = function(gulp, $, config, patterns) {
                     relative: true,
                     addRootSlash: true
                 }))
-                .pipe($.if(config.env === 'development' || require('yargs').argv.livereload, $.injectReload({
-                    port: config.livereload
-                })))
                 .pipe(gulp.dest('.tmp'));
         });
     }
