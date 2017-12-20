@@ -26,6 +26,7 @@ module.exports = function(gulp, $, config, patterns) {
                 .pipe($.cached('scripts'))                
                 .pipe($.babel({
                     presets: ['env'],
+                    plugins: ['transform-object-rest-spread'],
                 }))
                 .pipe($.replaceTask({
                     patterns: patterns,
